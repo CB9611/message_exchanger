@@ -1,0 +1,31 @@
+const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic List</title>
+</head>
+<body>
+    <h1>Available Topics</h1>
+    <% if (topics.length > 0) { %>
+        <ul>
+            <% topics.forEach((topic) => { %>
+                <li>
+                    <%= topic.name %>
+                    <form action="/topic/subscribe" method="post">
+                        <input type="hidden" name="topicId" value="<%= topic._id %>">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No topics available for subscription.</p>
+    <% } %>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+`;
+
+module.exports = htmlContent;
